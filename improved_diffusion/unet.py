@@ -364,7 +364,6 @@ class RPEAttention(nn.Module):
         super().__init__()
         self.num_heads = num_heads
         head_dim = channels // num_heads
-        # NOTE scale factor was wrong in my original version, can set manually to be compat with prev weights
         self.scale = head_dim ** -0.5
         self.use_checkpoint = use_checkpoint
 
