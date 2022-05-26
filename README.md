@@ -1,7 +1,9 @@
 # Video diffusion
-Repository for Flexible Diffusion Modeling of Long Videos,  building on https://github.com/openai/improved-diffusion.
+Anonymized repository for Flexible Diffusion Modeling of Long Videos,  building on https://github.com/openai/improved-diffusion. We have removed some scripts, such as those for computing optimal indices, during anonymization but these will be available in a future public code release.
 
 ## Training
+
+Before use, install this repository with `pip install -e .`
 
 We train FDM on each dataset with:
 
