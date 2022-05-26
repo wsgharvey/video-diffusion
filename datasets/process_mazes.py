@@ -134,7 +134,7 @@ if __name__ == '__main__':
                     print(f' [-] converting scene {file}-{i} into {path}')
                     p = Process(target=convert_raw_to_numpy,
                                 args=(dataset_info, raw_data, path, True))
-                    p.start(); p.join()  # surely this means we are not using parallelism?
+                    p.start(); p.join()
                 else:
                     print(path, 'exists')
             tot += i
