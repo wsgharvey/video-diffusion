@@ -57,21 +57,6 @@ def load_checkpoint(checkpoint_path, device, use_ddim=False, timestep_respacing=
 
 
 def get_model_results_path(args):
-    """
-        Given arguments passed to an evaluation run, returns the path to the results path.
-        The path has the format "results/<checkpoint_dir_subpath>/checkpoint name" where
-        <checkpoint_dir_subpath> is the subset of checkpoint path after ".*checkpoint.*/"
-        For example, if "/scratch/video-diffusion/saeids-checkpoints/abcdefg/ema_latest.pt"
-        is the checkpoint path, the result path will be
-        "results/abcdefg/ema_latest_<checkpoint_step>/". In this path, <checkpoint_step> is the
-        training step of the checkpoint and will only be added if the checkpoint path ends with
-        "latest", since otherwise the checkpoint name itself ends with the step number.
-        If args.eval_dir is not None, this function does nothing and returns the same path.
-        args is expected to have the following attributes:
-        - use_ddim
-        - timesptep_respacing
-        - outdir
-    """
     # Extract the diffusion sampling arguments string (DDIM/respacing)
     postfix = ""
     if args.use_ddim:

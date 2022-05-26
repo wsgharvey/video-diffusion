@@ -237,7 +237,7 @@ class FactorizedAttentionBlock(nn.Module):
         x = x.view(B, H, W, C, T).permute(0, 4, 3, 1, 2)  # B, T, C, H, W
         x = x.reshape(B, T, C, H*W)
         x = self.spatial_attention(x,
-                                   temb,  # TODO reshape temb?
+                                   temb,
                                    frame_indices=None,
                                    attn_weights_list=None if attn_weights_list is None else attn_weights_list['spatial'])
         x = x.reshape(BT, C, H, W)
@@ -781,7 +781,7 @@ class UNetVideoModel(UNetModel):
         return h + emb.view(BT, C, 1, 1)
 
 
-class CondMargVideoModel(UNetVideoModel):   # TODO could generalise to derive similar class for image model
+class CondMargVideoModel(UNetVideoModel):
 
     def __init__(self,
                  cond_emb_type,
@@ -818,7 +818,7 @@ class CondMargVideoModel(UNetVideoModel):   # TODO could generalise to derive si
                         x0*obs_mask],
                        dim=2)
         elif self.cond_emb_type in ['t=0', 'all']:
-            timesteps[obs_mask.view(B, T) == 1] = -1  # TODO
+            timesteps[obs_mask.view(B, T) == 1] = -1
         else:
             raise NotImplementedError
         out, attn = super().forward(x, timesteps=timesteps, attn_mask=anything_mask, **kwargs)

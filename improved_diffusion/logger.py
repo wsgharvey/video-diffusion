@@ -159,9 +159,7 @@ class WandbOutputFormat(KVWriter, SeqWriter):
         if wandb_dir == "none":
             wandb_dir = None
         if dist.get_rank() == 0:
-            wandb.init(entity='universal-conditional-ddpm',
-                       project='video-diffusion',
-                       config=config,
+            wandb.init(config=config,
                        dir=wandb_dir,
                        **wandb_kwargs)
             print(f"Wandb run id: {wandb.run.id}")

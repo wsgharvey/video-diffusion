@@ -1,6 +1,4 @@
 """gqn_mazes dataset."""
-"""This implementation is based on https://github.com/saeidnp/cwvae/blob/master/datasets/gqn_mazes/gqn_mazes.py and
-   https://github.com/iShohei220/torch-gqn/blob/c0156c72f4e63ca6523ab8d9a6f6b3ce9e0e391d/dataset/convert2torch.py"""
 
 import tensorflow as tf
 import tensorflow_datasets as tfds
