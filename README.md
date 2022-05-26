@@ -1,4 +1,17 @@
 # Video diffusion
+Repository for Flexible Diffusion Modeling of Long Videos,  building on https://github.com/openai/improved-diffusion.
+
+## Training
+
+We train FDM on each dataset with:
+
+`python scripts/video_train.py --num_workers 10 --T=300 --batch_size=8 --max_frames 20 --dataset=mazes_cwvae --num_res_blocks=1 --use_rpe_net True --enforce_position_invariance False --use_frame_encoding False --save_latest_only False --save_interval 50000`
+
+`python scripts/video_train.py --num_workers 10 --T=500 --batch_size=8 --max_frames 20 --dataset=minerl --num_res_blocks=1 --use_rpe_net True --enforce_position_invariance False --use_frame_encoding False --save_latest_only False --save_interval 50000`
+
+(with e.g. `mpiexec -n 4`) `python scripts/video_train.py --num_workers 10 --batch_size=2 --max_frames 20 --dataset=carla_no_traffic --num_res_blocks=1 --use_rpe_net True --save_latest_only False --save_interval 50000`
+
+See below for instructions on sampling videos with a trained network.
 
 ## Directory structures
 
@@ -61,9 +74,9 @@ python scripts/video_sample.py <path-to-checkpoint> --inference_mode independent
 ```
 It has the following arguments:
 - `checkpoint_path` (required): A required positional argument identifying path to the checkpoint file. It is shown by `<path-to-checkpoint>` in the example above.
-- `--inference_mode` (required): Inference mode. Currently, we supprt `autoreg`, `independent`, and `exp-past`. You can easily add your own mode as described later.
+- `--inference_mode` (required): Called a ``sampling scheme'' in the paper. Currently, Options include `autoreg` and `hierarchy-2`. You can add your own mode as described later.
 - `--step_size` (optional): Number of frames to predict in each prediciton step. Default is 1.
-- `--obs_length` (optional): Number of observed frames. It will observe this many frames from the beginning of the video and predict the rest. Default is 36.
+- `--obs_length` (optional): Number of observed frames. It will observe this many frames from the beginning of the video and predict the rest. Default is 36. These are taken from a test video, with the dataset inferred from the given checkpoint.
 - `--max_frames` (optional): Maximum number of video frames (observed or latent) allowed to pass to the model at once. Default is what the model was trained with.
 - `--num_samples` (optional): Number of samples to generate for each test video. Default is 1.
 - `--T` (optional): Length of the videos. If not specified, it will be inferred from the dataset.
