@@ -5,11 +5,11 @@ Repository for Flexible Diffusion Modeling of Long Videos,  building on https://
 
 We train FDM on each dataset with:
 
-`python scripts/video_train.py --num_workers 10 --T=300 --batch_size=8 --max_frames 20 --dataset=mazes_cwvae --num_res_blocks=1 --use_rpe_net True --enforce_position_invariance False --use_frame_encoding False --save_latest_only False --save_interval 50000`
+`python scripts/video_train.py --num_workers 10 --T=300 --batch_size=8 --max_frames 20 --dataset=mazes_cwvae --num_res_blocks=1`
 
-`python scripts/video_train.py --num_workers 10 --T=500 --batch_size=8 --max_frames 20 --dataset=minerl --num_res_blocks=1 --use_rpe_net True --enforce_position_invariance False --use_frame_encoding False --save_latest_only False --save_interval 50000`
+`python scripts/video_train.py --num_workers 10 --T=500 --batch_size=8 --max_frames 20 --dataset=minerl --num_res_blocks=1`
 
-(with e.g. `mpiexec -n 4`) `python scripts/video_train.py --num_workers 10 --batch_size=2 --max_frames 20 --dataset=carla_no_traffic --num_res_blocks=1 --use_rpe_net True --save_latest_only False --save_interval 50000`
+(with e.g. `mpiexec -n 4`) `python scripts/video_train.py --num_workers 10 --batch_size=2 --max_frames 20 --dataset=carla_no_traffic --num_res_blocks=1`
 
 See below for instructions on sampling videos with a trained network.
 
