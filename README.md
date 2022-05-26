@@ -3,6 +3,8 @@ Anonymized repository for Flexible Diffusion Modeling of Long Videos,  building 
 
 ## Training
 
+Before use, install this repository with `pip install -e .`
+
 We train FDM on each dataset with:
 
 `python scripts/video_train.py --num_workers 10 --T=300 --batch_size=8 --max_frames 20 --dataset=mazes_cwvae --num_res_blocks=1`
