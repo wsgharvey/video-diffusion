@@ -1,5 +1,8 @@
 # Video diffusion
 
+__This repo was used to run the experiments in [Flexible Diffusion Modeling of Long Videos](https://arxiv.org/abs/2205.11495) but is now deprecated. A newer and refactored version exists at https://github.com/plai-group/flexible-video-diffusion-modeling.__
+
+
 ## Directory structures
 
 ### Checkpoints
